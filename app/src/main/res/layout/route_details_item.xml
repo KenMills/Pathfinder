@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/cardview_margin"
+    xmlns:cardView="http://schemas.android.com/apk/res-auto"
+    android:contentDescription="@string/route_details_cardview_content"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.example.android.pathfinder.CustomFontTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/route_instructions"
+            android:id="@+id/route_instructions_textview"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            app:font = "times.ttf"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/route_walking_layout"
+            android:layout_below="@+id/route_instructions_textview"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+
+            <com.example.android.pathfinder.CustomFontTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="@string/route_distance"
+                android:id="@+id/distance_textview"
+                android:layout_below="@+id/route_instructions_textview"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:paddingEnd="@dimen/route_distance_padding"
+                android:paddingRight="@dimen/route_distance_padding"
+                app:font = "times.ttf"/>
+
+            <com.example.android.pathfinder.CustomFontTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="@string/route_duration"
+                android:id="@+id/duration_textview"
+                android:layout_below="@+id/route_instructions_textview"
+                android:layout_alignRight="@+id/route_instructions_textview"
+                android:layout_alignEnd="@+id/route_instructions_textview"
+                android:paddingStart="@dimen/route_duration_padding"
+                android:paddingLeft="@dimen/route_duration_padding"
+                app:font = "times.ttf"/>
+        </LinearLayout>
+
+        <com.example.android.pathfinder.CustomFontTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/route_travel"
+            android:id="@+id/travel_instructions_textview"
+            android:layout_below="@+id/route_walking_layout"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            app:font = "times.ttf"/>
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <PreferenceScreen
+        android:title="Route Preferences"
+        android:summary="Settings for the type of route to download.">
+
+        <ListPreference
+            android:title="Routes"
+            android:summary="Determines the type of route you would like to download"
+            android:key="routeType"
+            android:defaultValue="1"
+            android:entries="@array/route_type_list"
+            android:entryValues="@array/route_type_list" />
+
+        <CheckBoxPreference
+            android:title="Retrieve alternate routes"
+            android:defaultValue="true"
+            android:summary="Retrieve multiple routes or a single route."
+            android:key="alternateRoutes" />
+    </PreferenceScreen>
+
+    <PreferenceScreen
+        android:title="Travel Preferences"
+        android:summary="Allows the user to select prefered modes of transportation.">
+
+        <PreferenceCategory
+            android:title="Travel Preferences">
+            <MultiSelectListPreference
+                android:dialogTitle="Travel Preferences"
+                android:summary="When searching for a route, this mode of transportation will be used."
+                android:key="routePreference"
+                android:entries="@array/route_mode_list"
+                android:entryValues="@array/route_mode_list" />
+        </PreferenceCategory>
+    </PreferenceScreen>
+
+    <PreferenceScreen
+        android:title="General Settings"
+        android:summary="Application Settings">
+
+        <CheckBoxPreference
+            android:title="Clear cached routes"
+            android:defaultValue="false"
+            android:summary="Selecting this will clear routes saved."
+            android:key="clearCachedRoutes" />
+
+        <ListPreference
+            android:title="Number of saved routes"
+            android:summary="Selects the number of previous routes that will be saved."
+            android:key="savedRoutes"
+            android:defaultValue="5"
+            android:entries="@array/cached_route_list"
+            android:entryValues="@array/cached_route_list" />
+
+        <ListPreference
+            android:title="Route highlighting color"
+            android:summary="Selects the color to be used when highlighting a route."
+            android:key="routeHighlight"
+            android:defaultValue="Magenta"
+            android:entries="@array/highlight_color_list"
+            android:entryValues="@array/highlight_color_list" />
+
+        <ListPreference
+            android:title="Zoom Level"
+            android:summary="Selects the default zoom level."
+            android:key="zoomLevel"
+            android:defaultValue="10"
+            android:entries="@array/zoom_level_list"
+            android:entryValues="@array/zoom_level_list" />
+
+    </PreferenceScreen>
+</PreferenceScreen>

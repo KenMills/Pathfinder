@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/linearLayout"
+    >
+
+         <RelativeLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+             <Button
+                 android:layout_width="@dimen/widget_button_width"
+                 android:layout_height="@dimen/widget_button_height"
+                 android:id="@+id/buttonPrev"
+                 android:contentDescription="@string/widget_prev"
+                 android:background="@android:drawable/ic_media_previous"
+                 android:layout_gravity="top|start" />
+
+             <LinearLayout
+                 android:orientation="horizontal"
+                 android:layout_width="@dimen/widget_main_width"
+                 android:layout_height="@dimen/widget_main_height"
+                 android:layout_gravity="center_vertical"
+                 android:layout_alignParentTop="true"
+                 android:layout_toRightOf="@+id/buttonPrev"
+                 android:layout_toEndOf="@+id/buttonPrev"
+                 android:id="@+id/linearLayout2">
+
+                 <TextView
+                     android:layout_width="match_parent"
+                     android:layout_height="match_parent"
+                     android:text="@string/widget_start_addr"
+                     android:paddingTop="@dimen/widget_padding"
+                     android:paddingStart="@dimen/widget_padding"
+                     android:paddingLeft="@dimen/widget_padding"
+                     android:textSize="@dimen/widget_text_size"
+                     android:id="@+id/start_textview"
+                     android:contentDescription="@string/widget_content_start" />
+             </LinearLayout>
+
+             <LinearLayout
+                 android:orientation="horizontal"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_alignBottom="@+id/buttonPrev"
+                 android:layout_toRightOf="@+id/buttonPrev"
+                 android:layout_alignRight="@+id/linearLayout2"
+                 android:layout_alignEnd="@+id/linearLayout2"
+                 android:layout_below="@+id/linearLayout2">
+
+                 <TextView
+                     android:layout_width="match_parent"
+                     android:layout_height="match_parent"
+                     android:text="@string/widget_end_addr"
+                     android:paddingTop="@dimen/widget_padding"
+                     android:paddingStart="@dimen/widget_padding"
+                     android:paddingLeft="@dimen/widget_padding"
+                     android:textSize="@dimen/widget_text_size"
+                     android:id="@+id/dest_textview"
+                     android:contentDescription="@string/widget_content_end"/>
+
+             </LinearLayout>
+
+             <Button
+                     android:layout_width="@dimen/widget_button_width"
+                     android:layout_height="@dimen/widget_button_height"
+                     android:id="@+id/buttonNext"
+                     android:background="@android:drawable/ic_media_next"
+                     android:contentDescription="@string/widget_next"
+                     android:layout_gravity="top|end"
+                 android:layout_alignParentTop="true"
+                 android:layout_alignParentRight="true"
+                 android:layout_alignParentEnd="true" />
+         </RelativeLayout>
+
+</LinearLayout>

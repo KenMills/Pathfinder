@@ -94,4 +94,5 @@
     <string name="detail_duration">Trip Duration</string>
     <string name="detail_cost">Trip cost</string>
     <string name="detail_walking_time">Walking Time</string>
+    <string name="map_details_not_avail">Not Available</string>
 </resources>

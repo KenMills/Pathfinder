@@ -42,7 +42,12 @@ public class DirectionsJSONParser {
                 List path = new ArrayList<HashMap<String, String>>();
 
                 Route route = new Route();
-                route.fareText = (String)((JSONObject)((JSONObject)jRoutes.get(i)).get("fare")).get("text");
+
+                // fare may not always be available...
+                String temp = ((JSONObject)jRoutes.get(i)).optString("fare");
+                if (temp.length() > 0) {
+                    route.fareText = (String)((JSONObject)((JSONObject)jRoutes.get(i)).get("fare")).get("text");
+                }
 
                 route.legs = new Route.Leg[jLegs.length()];
 
@@ -96,7 +101,17 @@ public class DirectionsJSONParser {
                             route.legs[j].steps[k].transit.arrivalTime = (String)((JSONObject) ((JSONObject)((JSONObject)jSteps.get(k)).get("transit_details")).get("arrival_time")).get("text");
                             route.legs[j].steps[k].transit.departureStop = (String)((JSONObject) ((JSONObject)((JSONObject)jSteps.get(k)).get("transit_details")).get("departure_stop")).get("name");
                             route.legs[j].steps[k].transit.departureTime = (String)((JSONObject) ((JSONObject)((JSONObject)jSteps.get(k)).get("transit_details")).get("departure_time")).get("text");
-                            route.legs[j].steps[k].transit.vehicleName = (String)((JSONObject) ((JSONObject)((JSONObject)jSteps.get(k)).get("transit_details")).get("line")).get("short_name");
+
+                            // will get either "short_name" or "name"
+                            String tempName = ((JSONObject) ((JSONObject)((JSONObject)jSteps.get(k)).get("transit_details")).get("line")).optString("short_name");
+                            if (tempName.length() > 0) {
+                                route.legs[j].steps[k].transit.vehicleName = tempName;
+                            }
+                            else {
+                                route.legs[j].steps[k].transit.vehicleName = ((JSONObject) ((JSONObject)((JSONObject)jSteps.get(k)).get("transit_details")).get("line")).optString("name");
+                            }
+
+
                             route.legs[j].steps[k].transit.vehicleType = (String)((JSONObject)((JSONObject) ((JSONObject)((JSONObject)jSteps.get(k)).get("transit_details")).get("line")).get("vehicle")).get("name");
                         }
                         else {

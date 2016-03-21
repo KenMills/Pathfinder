@@ -241,7 +241,6 @@ public class MainActivity extends AppCompatActivity
         MapFragment mapFragment = (MapFragment) getSupportFragmentManager().findFragmentByTag(FRAGMENT_TAG_MAP);
         if (mapFragment != null) {
             mapFragment.MoveStartMarker(string);
-            mapFragment.ReCalcRoute();
         }
     }
 
@@ -252,7 +251,6 @@ public class MainActivity extends AppCompatActivity
         MapFragment mapFragment = (MapFragment) getSupportFragmentManager().findFragmentByTag(FRAGMENT_TAG_MAP);
         if (mapFragment != null) {
             mapFragment.MoveEndMarker(string);
-            mapFragment.ReCalcRoute();
         }
     }
 
@@ -508,6 +506,7 @@ public class MainActivity extends AppCompatActivity
         }
 
         mRouteManager.UpdateCurrentRoute(startAddress, endAddress);
+        showHome();
     }
 
     private boolean isTablet() {
@@ -603,10 +602,16 @@ public class MainActivity extends AppCompatActivity
         if (route != null) {
             ContentValues contentValues = new ContentValues();
 
-            contentValues.put(RouteProvider.startLatField, route.startingPoint.latitude);
-            contentValues.put(RouteProvider.startLonField, route.startingPoint.longitude);
-            contentValues.put(RouteProvider.endLatField, route.endingPoint.latitude);
-            contentValues.put(RouteProvider.endLonField, route.endingPoint.longitude);
+            if (route.startingPoint != null) {
+                contentValues.put(RouteProvider.startLatField, route.startingPoint.latitude);
+                contentValues.put(RouteProvider.startLonField, route.startingPoint.longitude);
+            }
+
+            if (route.endingPoint != null) {
+                contentValues.put(RouteProvider.endLatField, route.endingPoint.latitude);
+                contentValues.put(RouteProvider.endLonField, route.endingPoint.longitude);
+            }
+
             contentValues.put(RouteProvider.startAddressField, route.startAddress);
             contentValues.put(RouteProvider.endAddressField, route.endAddress);
 

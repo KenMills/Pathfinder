@@ -40,6 +40,7 @@ public class MapDetailsFragment extends Fragment {
 
     private static String mFare;
     private static String mWalking;
+    private static String mNotAvailable;
 
     public MapDetailsFragment() {
         // Required empty public constructor
@@ -81,6 +82,7 @@ public class MapDetailsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_map_details, container, false);
         mFare = getResources().getString(R.string.map_details_fare);
         mWalking = getResources().getString(R.string.map_details_walkingtime);
+        mNotAvailable = getResources().getString(R.string.map_details_not_avail);
 
         mRecyclerView = (RecyclerView) view.findViewById(R.id.map_details_recyclerview);
         mAdapter = new MapDetailsAdapter(getActivity(), getData(), mListener);
@@ -99,7 +101,14 @@ public class MapDetailsFragment extends Fragment {
             MapDetailsItem detailItem = new MapDetailsItem();
             Route route = detailsManager.GetRoute(i);
 
-            detailItem.cost = mFare + route.fareText;
+            // fare is not always available...
+            if (route.fareText != null) {
+                detailItem.cost = mFare + route.fareText;
+            }
+            else {
+                detailItem.cost = mFare + mNotAvailable;
+            }
+
             detailItem.duration = route.legs[0].durationText;
             detailItem.trip = route.legs[0].departureTime + " - " + route.legs[0].arrivalTime;
 

@@ -334,11 +334,15 @@ public class MainActivity extends AppCompatActivity
     public void onRouteCalcComplete(int numRoutes) {
         Log.d(LOG_TAG, "onRouteCalcComplete");
 
-        if (numRoutes > 0) {
+        if ((numRoutes > 0) && (mFragmentState == FRAGMENT_STATE_SEARCH)) {
             mFab.show();
         }
         else {
             mFab.hide();
+        }
+
+        if (mFragmentState != FRAGMENT_STATE_SEARCH) {
+            showHome();
         }
 
         int maxRoutes = Settings.SettingsFragment.getSavedRoutes();
